@@ -6,7 +6,7 @@ class SplashController extends GetxController {
   void onInit() {
     Future.delayed(const Duration(seconds: 3), () {
       if(Get.find<SessionController>().getUserSession() != null) {
-        Get.offAllNamed('/home');
+        Get.offAllNamed('/tab');
       } else {
         Get.offAllNamed('/login');
       }

@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
-import '../../Helper/session_controller.dart';
 import 'checkout_controller.dart';
 
 class CheckoutView extends GetView<CheckoutController> {

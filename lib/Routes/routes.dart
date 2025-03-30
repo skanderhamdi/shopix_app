@@ -5,14 +5,16 @@ import 'package:shopix/Bindings/cart_binding.dart';
 import 'package:shopix/Bindings/product_binding.dart';
 import 'package:shopix/Bindings/splash_binding.dart';
 import '../App/Checkout/checkout_view.dart';
-import '../App/Home/home_view.dart';
 import '../App/Login/login_view.dart';
+import '../App/OrderDetails/order_details_view.dart';
 import '../App/Signup/signup_view.dart';
 import '../App/Splash/splash_view.dart';
+import '../App/TabBar/tabbar_view.dart';
 import '../Bindings/checkout_binding.dart';
-import '../Bindings/home_binding.dart';
 import '../Bindings/login_binding.dart';
+import '../Bindings/order_binding.dart';
 import '../Bindings/signup_binding.dart';
+import '../Bindings/tabbar_binding.dart';
 
 class AppRoutes {
   static List<GetPage<dynamic>> getPages = [
@@ -36,9 +38,9 @@ class AppRoutes {
     ),
     /// Home
     GetPage(
-        name: '/home',
-        binding: HomeBinding(),
-        page: () => const HomeView()
+        name: '/tab',
+        binding: TabBarBinding(),
+        page: () => const TabBarView()
     ),
     /// Product
     GetPage(
@@ -57,6 +59,12 @@ class AppRoutes {
         name: '/checkout',
         binding: CheckoutBinding(),
         page: () => const CheckoutView()
-    )
+    ),
+    /// Order Details
+    GetPage(
+        name: '/order',
+        binding: OrderBinding(),
+        page: () => const OrderDetailsView()
+    ),
   ];
 }

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -32,7 +33,7 @@ class LoginController extends GetxController {
       if(response.statusCode == 200) {
         Map<String,dynamic> data = json.decode(response.bodyString ?? '{}');
         Get.find<SessionController>().setUserSession(User.fromJSON(data['data']));
-        Get.offAllNamed('/home');
+        Get.offAllNamed('/tab');
       } else {
         if(response.statusCode == 500) {
           Get.snackbar('error'.tr, 'something_went_wrong_please_try_again_later'.tr, backgroundColor: Get.theme.colorScheme.error, colorText: Colors.white, snackPosition: SnackPosition.BOTTOM, duration: const Duration(seconds: 5));

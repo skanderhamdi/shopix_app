@@ -7,7 +7,7 @@ import 'package:shopix/Models/product_cart.dart';
 
 class ProductCartItem extends StatelessWidget {
   final ProductCart productCart;
-  final Function onDelete;
+  final Function? onDelete;
   const ProductCartItem({super.key, required this.onDelete, required this.productCart});
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class ProductCartItem extends StatelessWidget {
         children: [
           const SizedBox(width: 15),
           SlidableAction(
-            onPressed: (_) => onDelete(),
+            onPressed: (_) => onDelete!(),
             backgroundColor: Get.theme.colorScheme.error,
             foregroundColor: Colors.white,
             icon: CupertinoIcons.trash,
