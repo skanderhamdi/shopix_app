@@ -1,9 +1,11 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:shopix/Models/product.dart';
 
+import '../Localization/language_constants.dart';
 import '../Models/product_cart.dart';
 import '../Models/user.dart';
 
@@ -14,6 +16,21 @@ class SessionController extends GetxController {
   Future<void> initialize() async {
     await GetStorage.init('session');
     getStorageBox = GetStorage('session');
+  }
+
+  /// Locale (Language stuff)
+  void setLocale(String lang) {
+    getStorageBox.write('lang', lang);
+    Get.updateLocale(createLocale(lang));
+    update();
+  }
+
+  Locale getLocale() {
+    try {
+      return createLocale(getStorageBox.read('lang') ?? 'en');
+    } catch(e) {
+      return createLocale('en');
+    }
   }
 
   /// User session stuff

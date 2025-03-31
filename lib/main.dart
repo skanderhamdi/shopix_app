@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:shopix/Helper/session_controller.dart';
 import 'package:shopix/Localization/language_constants.dart';
@@ -11,8 +12,6 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Get.put(SessionController(), permanent: true);
   await Get.find<SessionController>().initialize();
-  /// Get.find<SessionController>().getStorageBox.erase();
-  /// Get.find<SessionController>().getStorageBox.write('cart', null);
   runApp(const MyApp());
 }
 
@@ -25,7 +24,17 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
         title: "app_name".tr,
         debugShowCheckedModeBanner: false,
-        locale: createLocale('en'),
+        locale: Get.find<SessionController>().getLocale(),
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate
+        ],
+        supportedLocales: const [
+          Locale('en', 'US'),
+          Locale('fi', 'FI'),
+          Locale('fr', 'FR'),
+        ],
         theme: Styles.appTheme(context: context),
         translations: AppTranslations(),
         getPages: AppRoutes.getPages,

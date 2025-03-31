@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shopix/Helper/session_controller.dart';
 import 'settings_controller.dart';
 
 class SettingsView extends GetView<SettingsController> {
@@ -251,53 +252,80 @@ class SettingsView extends GetView<SettingsController> {
                     padding: const EdgeInsets.symmetric(horizontal: 30),
                     child: Text('application_settings'.tr, style: Get.textTheme.displayLarge!.copyWith(fontWeight: FontWeight.bold, color: Get.theme.colorScheme.primaryContainer)),
                   ),
+                  const SizedBox(height: 15),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30),
+                    child: Text('application_language'.tr, style: Get.textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold, color: Get.theme.colorScheme.primaryContainer)),
+                  ),
                   const SizedBox(height: 25),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Container(
-                            padding: const EdgeInsets.all(5),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(
-                                color: Get.theme.colorScheme.primary,
-                                width: 3
+                    child: GetBuilder<SessionController>(
+                      builder: (sessionController) {
+                        return Row(
+                          children: [
+                            Expanded(
+                              child: CupertinoButton(
+                                padding: EdgeInsets.zero,
+                                onPressed: () {
+                                  sessionController.setLocale('en');
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.all(5),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(
+                                      color: Get.locale?.languageCode == 'en' ? Get.theme.colorScheme.primary : Colors.transparent,
+                                      width: 3
+                                    )
+                                  ),
+                                  child: ClipRRect(borderRadius: BorderRadius.circular(10), child: Image.asset('assets/flags/us.png'))
+                                ),
                               )
                             ),
-                            child: ClipRRect(borderRadius: BorderRadius.circular(10), child: Image.asset('assets/flags/us.png'))
-                          )
-                        ),
-                        const SizedBox(width: 10),
-                        Expanded(
-                            child: Container(
-                                padding: const EdgeInsets.all(5),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(
-                                        color: Get.theme.colorScheme.primary,
-                                        width: 3
-                                    )
-                                ),
-                                child: ClipRRect(borderRadius: BorderRadius.circular(10), child: Image.asset('assets/flags/finland.png'))
+                            const SizedBox(width: 10),
+                            Expanded(
+                                child: CupertinoButton(
+                                  padding: EdgeInsets.zero,
+                                  onPressed: () {
+                                    sessionController.setLocale('fi');
+                                  },
+                                  child: Container(
+                                      padding: const EdgeInsets.all(5),
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(10),
+                                          border: Border.all(
+                                              color: Get.locale?.languageCode == 'fi' ? Get.theme.colorScheme.primary : Colors.transparent,
+                                              width: 3
+                                          )
+                                      ),
+                                      child: ClipRRect(borderRadius: BorderRadius.circular(10), child: Image.asset('assets/flags/finland.png'))
+                                  ),
+                                )
+                            ),
+                            const SizedBox(width: 10),
+                            Expanded(
+                                child: CupertinoButton(
+                                  padding: EdgeInsets.zero,
+                                  onPressed: () {
+                                    sessionController.setLocale('fr');
+                                  },
+                                  child: Container(
+                                      padding: const EdgeInsets.all(5),
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(10),
+                                          border: Border.all(
+                                              color: Get.locale?.languageCode == 'fr' ? Get.theme.colorScheme.primary : Colors.transparent,
+                                              width: 3
+                                          )
+                                      ),
+                                      child: ClipRRect(borderRadius: BorderRadius.circular(10), child: Image.asset('assets/flags/france.png'))
+                                  )
+                                )
                             )
-                        ),
-                        const SizedBox(width: 10),
-                        Expanded(
-                            child: Container(
-                                padding: const EdgeInsets.all(5),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(
-                                        color: Get.theme.colorScheme.primary,
-                                        width: 3
-                                    )
-                                ),
-                                child: ClipRRect(borderRadius: BorderRadius.circular(10), child: Image.asset('assets/flags/france.png'))
-                            )
-                        )
-                      ]
+                          ]
+                        );
+                      }
                     )
                   )
                 ]

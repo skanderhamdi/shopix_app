@@ -11,6 +11,7 @@ class SettingsController extends GetxController {
   @override
   void onInit() {
     emailController = TextEditingController(text: sessionController.getUserSession()!.email!);
+    emailController = TextEditingController(text: sessionController.getUserSession()!.fullname!);
     passwordController = TextEditingController();
     passwordConfirmationController = TextEditingController();
     fullnameController = TextEditingController();
