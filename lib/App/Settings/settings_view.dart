@@ -31,9 +31,7 @@ class SettingsView extends GetView<SettingsController> {
                           const Spacer(),
                           CupertinoButton(
                             padding: EdgeInsets.zero,
-                            onPressed: () {
-                              /// TODO save changes
-                            },
+                            onPressed: controller.saveChanges,
                             child: Text('save_changes'.tr, style: Get.textTheme.titleLarge!.copyWith(color: Get.theme.colorScheme.primary))
                           )
                         ]

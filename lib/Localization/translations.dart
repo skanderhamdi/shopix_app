@@ -76,7 +76,9 @@ class AppTranslations extends Translations {
       'fullname': 'Full name',
       'application_settings': 'Application Settings',
       'application_language': 'Application language',
-      'we_could_not_update_your_profile': 'We could not update your profile'
+      'we_could_not_update_your_profile': 'We could not update your profile',
+      'settings_updated_successfully': 'Profile updated successfully',
+      'failed_to_update_settings': 'Failed to update profile'
     },
     'fi_FI' : {
       'app_name': 'Shopix',
